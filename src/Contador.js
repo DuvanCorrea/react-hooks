@@ -1,16 +1,20 @@
 import React, { useState, Fragment } from "react";
 
 const Contador = () => {
-  const [num, setNum] = useState(0);
+  const [arrayNum, setArrayNum] = useState([1, 2, 3, 4, 5]);
 
   const update = () => {
-    setNum(num + 1);
+    setArrayNum([...arrayNum, arrayNum[arrayNum.length - 1] + 1]);
   };
 
   return (
     <Fragment>
-      Contador {num}
       <button onClick={update}> Button +</button>
+      <ul>
+        {arrayNum.map((e, i) => (
+          <li key={i}>{e}</li>
+        ))}
+      </ul>
     </Fragment>
   );
 };
