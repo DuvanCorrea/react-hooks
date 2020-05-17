@@ -1,20 +1,31 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
+import { useForm } from "react-hook-form";
 
 const Contador = () => {
-  const [arrayNum, setArrayNum] = useState([1, 2, 3, 4, 5]);
+  const { register, error, handleSubmit } = useForm();
 
-  const update = () => {
-    setArrayNum([...arrayNum, arrayNum[arrayNum.length - 1] + 1]);
+  const showData = (data, e) => {
+    console.log(data);
   };
 
   return (
     <Fragment>
-      <button onClick={update}> Button +</button>
-      <ul>
-        {arrayNum.map((e, i) => (
-          <li key={i}>{e}</li>
-        ))}
-      </ul>
+      <form onSubmit={handleSubmit(showData)}>
+        <input
+          name="input"
+          ref={register({
+            required: { value: true, message: "Input obligatorio" },
+          })}
+        ></input>
+        <input
+          name="input2"
+          ref={register({
+            required: { value: true, message: "Input2 obligatorio" },
+          })}
+        ></input>
+        <span>{error?.input?.message}</span>
+        <button>Send</button>
+      </form>
     </Fragment>
   );
 };
