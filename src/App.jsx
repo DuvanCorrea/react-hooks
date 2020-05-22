@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import About from "./About.jsx";
 
 const App = () => {
   return (
@@ -15,7 +16,9 @@ const App = () => {
           <h1>Contact...</h1>
         </Link>
         <Switch>
-          <Route path="/about">About...</Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route path="/contact">Contact us...</Route>
           <Route path="/a/b">This is b</Route>
           <Route path="/" exact>
