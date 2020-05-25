@@ -1,9 +1,16 @@
-import React, { Fragment } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import About from "./About.jsx";
+import React from "react";
+import Pokemons from "./components/Pokemons.jsx";
+import { Provider } from "react-redux";
+import generateStore from "./redux/store";
 
 const App = () => {
-  return <Fragment>Hola world</Fragment>;
+  const store = generateStore();
+
+  return (
+    <Provider store={store}>
+      <Pokemons />
+    </Provider>
+  );
 };
 
 export default App;
